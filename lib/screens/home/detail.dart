@@ -16,18 +16,8 @@ class DetailPage extends StatelessWidget {
            // valueColor: AlwaysStoppedAnimation(Colors.green)),
       ),
     );
-    // method for the minutes
-   // final coursePrice = Container(
-     // padding: const EdgeInsets.all(7.0),
-     // decoration: new BoxDecoration(
-       //   border: new Border.all(color: Colors.white),
-        //  borderRadius: BorderRadius.circular(5.0)),
-      //child: new Text(
-        // "\$20",
-      //  "\$" + lesson.price.toString(),
-       // style: TextStyle(color: Colors.white),
-     // ),
-   // );
+
+
     Container _buildDiv() {
       return Container(
         margin: const EdgeInsets.symmetric(
