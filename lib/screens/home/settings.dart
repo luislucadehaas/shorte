@@ -8,7 +8,7 @@ class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: Colors.grey.shade300,
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text(
@@ -90,7 +90,7 @@ class Settings extends StatelessWidget {
       ),
       width: double.infinity,
       height: 1.0,
-      color: Colors.grey.shade300,
+      color: Colors.grey.shade400,
     );
   }
 }

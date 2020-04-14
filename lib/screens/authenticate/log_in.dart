@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shortefilmfestival/screens/home/home.dart';
 import 'package:shortefilmfestival/services/sign_in.dart';
+import 'package:flare_flutter/flare_actor.dart';
+
 
 class LoginPage extends StatefulWidget {
   @override
