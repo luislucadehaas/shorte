@@ -3,6 +3,7 @@ import 'package:shortefilmfestival/screens/home/download.dart';
 import 'package:shortefilmfestival/screens/home/quest.dart';
 import 'package:shortefilmfestival/screens/home/settings.dart';
 import 'package:shortefilmfestival/screens/home/stream.dart';
+import 'package:shortefilmfestival/screens/onboarding.dart';
 
 
 class Home extends StatelessWidget {
@@ -46,7 +47,7 @@ class _ListPageState extends State<ListPage> {
           onPressed: () {
            Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Settings()),
+            MaterialPageRoute(builder: (context) => OnboardingScreen()),
             );
           },
         )

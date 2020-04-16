@@ -10,28 +10,36 @@ class Quest extends StatelessWidget {
           padding: EdgeInsets.only(right: 12.0),
           decoration: new BoxDecoration(
               border: new Border(
-                  right: new BorderSide(width: 1.0, color: Colors.white24))),
-          child: Icon(Icons.autorenew, color: Colors.white),
+                  right: new BorderSide(width: 1.0, color: Colors.black26))),
+          child: Icon(Icons.autorenew, color: Colors.black),
         ),
         title: Text(
           "Horror",
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
         // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
 
         trailing:
-        Icon(Icons.keyboard_arrow_right, color: Colors.white, size: 30.0));
+        Icon(Icons.keyboard_arrow_right, color: Colors.black, size: 30.0));
 
     final makeCard = Card(
       elevation: 8.0,
       margin: new EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
       child: Container(
-        decoration: BoxDecoration(color: Color.fromRGBO(64, 75, 96, .9)),
+        decoration: BoxDecoration(color: Color.fromRGBO(25, 225, 0, .5)),
         child: makeListTile,
       ),
     );
 
+
+
+
+
+
+
+
     final makeBody = Container(
+
       child: ListView.builder(
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
@@ -43,6 +51,7 @@ class Quest extends StatelessWidget {
     );
     return Scaffold(
       backgroundColor: Color.fromRGBO(0, 0, 0, 1.0),
+
       body: makeBody,
     );
   }
