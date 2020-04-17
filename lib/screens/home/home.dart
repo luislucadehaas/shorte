@@ -47,7 +47,7 @@ class _ListPageState extends State<ListPage> {
           onPressed: () {
            Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => OnboardingScreen()),
+            MaterialPageRoute(builder: (context) => Settings()),
             );
           },
         )
