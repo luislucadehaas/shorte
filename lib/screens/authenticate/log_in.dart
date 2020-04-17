@@ -10,6 +10,22 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+  AuthService auth = AuthService();
+  @override
+  void initState() {
+    super.initState();
+    auth.getUser.then(
+          (user) {
+        if (user != null) {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {return Home();},
+          ),
+          );
+        }
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,16 +49,11 @@ class _LoginPageState extends State<LoginPage> {
   Widget _signInButton() {
     return OutlineButton(
       splashColor: Colors.grey,
-      onPressed: () {
-        signInWithGoogle().whenComplete(() {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return Home();
-              },
-            ),
-          );
-        });
+      onPressed: () async{
+        var user = await auth.googleSignIn();
+        if (user != null) {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {return Home();},),);
+        };
       },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       highlightElevation: 0,
