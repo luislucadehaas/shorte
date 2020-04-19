@@ -19,16 +19,10 @@ class MyApp extends StatelessWidget {
               value: AuthService().user)
         ],
         child: MaterialApp(
+          debugShowCheckedModeBanner: false,
             navigatorObservers: [
               FirebaseAnalyticsObserver(analytics: FirebaseAnalytics()),
             ],
-
-            routes: {
-      //        '/': (context) => LoginScreen(),
-      //        '/stream': (context) => Stream(),
-      //        '/download': (context) => Download(),
-      //        '/quest': (context) => Quest(),
-            },
 
             theme: ThemeData(
               // your customizations here
