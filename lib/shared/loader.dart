@@ -7,7 +7,9 @@ class Loader extends StatelessWidget {
     return Container(
       width: 50,
       height: 50,
-      child: CircularProgressIndicator(),
+      child: CircularProgressIndicator(
+        valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),
+      ),
     );
   }
 }
@@ -16,7 +18,7 @@ class LoadingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: Color.fromRGBO(0, 0, 0, 1.0),
       body: Center(
         child: Loader(),
       ),

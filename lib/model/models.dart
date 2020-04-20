@@ -53,7 +53,7 @@ class Film {
 //
 //
 class Genre {
-  String id;
+  final String id;
   final String color;
   final String title;
   final List<Film> films;

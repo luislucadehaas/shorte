@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shortefilmfestival/screens/authenticate/log_in.dart';
 
 class OnboardingScreen extends StatefulWidget {
   @override
@@ -49,7 +50,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 Container(
                   alignment: Alignment.centerRight,
                   child: FlatButton(
-                    onPressed: () => print('Skip'),
+                    onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) {return LoginPage();},),),
                     child: Text(
                       'Skip',
                       style: TextStyle(
@@ -77,8 +78,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           children: <Widget>[
                             Center(
                               child: Image(
-                                image: AssetImage(""
-                                ),
+                                image: AssetImage("images/shorte.png"),
                                 height: 300.0,
                                 width: 300.0,
                               ),
@@ -111,7 +111,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             Center(
                               child: Image(
                                 image: AssetImage(
-                                  '',
+                                  'images/shorte.png',
                                 ),
                                 height: 300.0,
                                 width: 300.0,
@@ -145,7 +145,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             Center(
                               child: Image(
                                 image: AssetImage(
-                                  '',
+                                  'images/shorte.png',
                                 ),
                                 height: 300.0,
                                 width: 300.0,
@@ -224,7 +224,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         width: double.infinity,
         color: Colors.white,
         child: GestureDetector(
-          onTap: () => print('Get started'),
+          onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) {return LoginPage();},),),
           child: Center(
             child: Padding(
               padding: EdgeInsets.only(bottom: 30.0),

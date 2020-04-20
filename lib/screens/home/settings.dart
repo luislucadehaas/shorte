@@ -48,8 +48,8 @@ class Settings extends StatelessWidget {
                     _buildDivider(),
                     ListTile(
 
-                      title: Text("Subscription:"),
-                      trailing: Text("FREE"),
+                      title: Text("Subscription:  FREE"),
+                      trailing: Icon(Icons.keyboard_arrow_right, color: Colors.black, size: 30.0),
                       onTap: () {},
                     ),
                   ],

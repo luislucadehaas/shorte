@@ -10,7 +10,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Shorte',
       theme: new ThemeData(primaryColor: Color.fromRGBO(0, 0, 0, 1.0)),
       home: new ListPage(title: 'Stream'),
     );
@@ -32,7 +32,7 @@ class _ListPageState extends State<ListPage> {
   final _pageOptions = [
     Stream(),
     Download(),
-    Quest(),
+    GenreScreen(),
   ];
 
   @override
