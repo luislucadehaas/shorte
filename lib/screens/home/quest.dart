@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:shortefilmfestival/model/models.dart';
+import 'package:shortefilmfestival/screens/home/detail.dart';
+import 'package:shortefilmfestival/screens/home/list.dart';
 import 'package:shortefilmfestival/services/globals.dart';
 import 'package:shortefilmfestival/shared/loader.dart';
+import 'package:floating_search_bar/floating_search_bar.dart';
 
 
 
 class GenreScreen extends StatelessWidget {
-
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +20,11 @@ class GenreScreen extends StatelessWidget {
           return Scaffold(
             backgroundColor: Color.fromRGBO(0, 0, 0, 1.0),
 
-            body: GridView.count(
-              primary: false,
-              padding: const EdgeInsets.all(10.0),
-              crossAxisSpacing: 10.0,
-              crossAxisCount: 1,
-              children: genres.map((genre) => GenreItem(genre: genre)).toList(),
+            body: Container(
+                padding: EdgeInsets.only(top:10),
+              child: ListView(
+                children: genres.map((genre) => GenreItem(genre: genre)).toList(),
+              ),
             ),
           );
         } else {
@@ -43,17 +44,19 @@ class GenreItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 90,
         child: Card(
+
         elevation: 8.0,
         clipBehavior: Clip.antiAlias,
         margin: new EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
            child: Container(
-           decoration: BoxDecoration(color: Color.fromRGBO(25, 225, 0, .5)),
+           decoration: BoxDecoration(color: Color.fromRGBO(153, 193, 255,1)),
             child: InkWell(
              onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (BuildContext context) => GenreScreen(),
+                  builder: (BuildContext context) => Search(),
                 ),
               );
              },
@@ -62,13 +65,12 @@ class GenreItem extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Padding(
-                        padding: EdgeInsets.only(left: 10, right: 10),
+                        padding: EdgeInsets.only(left: 20, right: 0),
                         child: Text(
-                          genre.title, style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
-                          //trailing:
-                          //Icon(Icons.keyboard_arrow_right, color: Colors.black, size: 30.0)),
-                    ),
-                    // Text(topic.description)
+                          genre.title, style: TextStyle(color: Colors.black, fontSize: 23 ,fontWeight: FontWeight.bold)),
+                        ),
+                      //trailing:
+                      //Icon(Icons.keyboard_arrow_right, color: Colors.black, size: 30.0)),
                     ), ],
                 ),
                 // )
@@ -119,7 +121,7 @@ class GenreItem extends StatelessWidget {
 //        }).toList());
 //  }
 //}
-//
+
 
 
 //import 'package:flutter/material.dart';
