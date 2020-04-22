@@ -1,5 +1,3 @@
-
-
 class Report {
   String uid;
   int total;
@@ -55,16 +53,22 @@ class Film {
 class Genre {
   final String id;
   final String color;
+  final int r ;
+  final int g ;
+  final int b ;
   final String title;
   final List<Film> films;
 
-  Genre({ this.color, this.title, this.films, this.id  });
+  Genre({ this.color, this.title, this.films, this.id, this.r, this.g, this.b  });
 
   factory Genre.fromMap(Map data) {
     return Genre(
       id: data['id'] ?? '',
       title: data['title'] ?? '',
       color: data['color'] ?? '',
+      r: data['r'] ?? 0,
+      g: data['g'] ?? 0,
+      b: data['b'] ?? 0,
       films:  (data['films'] as List ?? []).map((v) => Film.fromMap(v)).toList(), //data['films'],
     );
   }

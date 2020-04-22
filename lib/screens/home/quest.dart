@@ -51,7 +51,7 @@ class GenreItem extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         margin: new EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
            child: Container(
-           decoration: BoxDecoration(color: Color.fromRGBO(153, 193, 255,1)),
+           decoration: BoxDecoration(color: Color.fromRGBO(genre.r, genre.g, genre.b,1)),
             child: InkWell(
              onTap: () {
               Navigator.of(context).push(
@@ -123,54 +123,3 @@ class GenreItem extends StatelessWidget {
 //}
 
 
-
-//import 'package:flutter/material.dart';
-
-//class Quest extends StatelessWidget {
-//  @override
-//  Widget build(BuildContext context) {
-//
-//    final makeListTile = ListTile(
-//        contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-//        leading: Container(
-//          padding: EdgeInsets.only(right: 12.0),
-//          decoration: new BoxDecoration(
-//              border: new Border(
-//                  right: new BorderSide(width: 1.0, color: Colors.black26))),
-//          child: Icon(Icons.autorenew, color: Colors.black),
-//        ),
-//        title: Text(
-//          "Horror",
-//          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
-//
-//        trailing:
-//        Icon(Icons.keyboard_arrow_right, color: Colors.black, size: 30.0));
-//
-//    final makeCard = Card(
-//      elevation: 8.0,
-//      margin: new EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
-//      child: Container(
-//        decoration: BoxDecoration(color: Color.fromRGBO(25, 225, 0, .5)),
-//        child: makeListTile,
-//      ),
-//    );
-//
-//
-//    final makeBody = Container(
-//
-//      child: ListView.builder(
-//        scrollDirection: Axis.vertical,
-//        shrinkWrap: true,
-//        itemCount: 6,
-//        itemBuilder: (BuildContext context, int index) {
-//          return makeCard;
-//        },
-//      ),
-//    );
-//    return Scaffold(
-//      backgroundColor: Color.fromRGBO(0, 0, 0, 1.0),
-//
-//      body: makeBody,
-//    );
-//  }
-//}

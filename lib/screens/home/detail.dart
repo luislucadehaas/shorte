@@ -187,21 +187,21 @@ class DetailPage extends StatelessWidget {
     );
 
     // geht noch nicht
-    _launchURL() async {
-      const url = 'https://flutter.dev';
-      if (await canLaunch(url)) {
-        await launch(url);
-      } else {
-        throw 'Could not launch $url';
-      }
-    }
+//    _launchURL() async {
+//      const url = 'https://flutter.dev';
+//      if (await canLaunch(url)) {
+//        await launch(url);
+//      } else {
+//        throw 'Could not launch $url';
+//      }
+//    }
 
     final readButton = Container(
         padding: EdgeInsets.symmetric(vertical: 16.0),
         width: 300.0,
         child: RaisedButton(
           padding: EdgeInsets.symmetric(vertical: 12.0),
-          onPressed: _launchURL,
+//          onPressed: _launchURL,
           color: Color.fromRGBO(0, 0, 0, 1.0),
           shape: RoundedRectangleBorder(
               borderRadius: new BorderRadius.circular(9.0),
