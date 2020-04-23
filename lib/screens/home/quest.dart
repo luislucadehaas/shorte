@@ -56,10 +56,11 @@ class GenreItem extends StatelessWidget {
              onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (BuildContext context) => Search(),
+                  builder: (BuildContext context) => Search(genre: genre),
                 ),
               );
              },
+
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -82,44 +83,112 @@ class GenreItem extends StatelessWidget {
   }
 }
 
-//class FilmList extends StatelessWidget {
+
+
+
+class Search extends StatelessWidget {
+  final Genre genre;
+  Search({this.genre});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text(genre.title, style: TextStyle(fontWeight: FontWeight.bold)),
+
+      ),
+      body: ListView(children: [
+              Container(
+            margin: const EdgeInsets.symmetric(
+              horizontal: 0.0,
+            ),
+            width: double.infinity,
+            height: 3.0,
+            color: Color.fromRGBO(genre.r, genre.g, genre.b,1),
+          ),
+        FilmList(genre: genre)
+      ]),
+    );
+  }
+}
+
+
+
+class FilmList extends StatelessWidget {
+  final Genre genre;
+  FilmList({Key key, this.genre});
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Column(
+        children: genre.films.map((film) {
+          return Card(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+            elevation: 4,
+            margin: EdgeInsets.all(4),
+            child: InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => DetailPage(),
+                  ),
+                );
+              },
+              child: Container(
+                padding: EdgeInsets.all(8),
+                child: ListTile(
+                  title: Text(
+                    film.title,
+                    style: Theme.of(context).textTheme.title,
+                  ),
+                  subtitle: Text(
+                    film.description,
+                    overflow: TextOverflow.fade,
+                    style: Theme.of(context).textTheme.subhead,
+                  ),
+                ),
+              ),
+            ),
+          );
+        }).toList());
+  }
+}
+
+
+
+//class _SearchState extends State<Search> {
 //  final Genre genre;
-//  GenreList({Key key, this.genre});
+//  _SearchState({this.genre});
 //
 //  @override
 //  Widget build(BuildContext context) {
+//    return Scaffold(
+//      backgroundColor: Colors.black,
+//      appBar: AppBar(
+//        backgroundColor: Colors.black,
+//        title: Text("genre.title"),
+//      ),
+//      body: FloatingSearchBar.builder(
+//        padding: EdgeInsets.only(top: 10.0),
 //
-//    return Column(
-//        children: genre.films.map((film) {
-//          return Card(
-//            shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-//            elevation: 4,
-//            margin: EdgeInsets.all(4),
-//            child: InkWell(
-//              onTap: () {
-////                Navigator.of(context).push(
-////                  MaterialPageRoute(
-////                    builder: (BuildContext context) => FilmScreen(quizId: quiz.id),
-////                  ),
-////                );
-//              },
-//              child: Container(
-//                padding: EdgeInsets.all(8),
-//                child: ListTile(
-//                  title: Text(
-//                    film.title,
-//                    style: Theme.of(context).textTheme.title,
-//                  ),
-//                  subtitle: Text(
-//                    film.description,
-//                    overflow: TextOverflow.fade,
-//                  ),
-//                ),
-//              ),
-//            ),
+//        itemCount: 3,
+//        itemBuilder: (BuildContext context, int index) {
+//          return ListTile(
+//            leading: Text(index.toString()),
 //          );
-//        }).toList());
+//        },
+//        trailing: Icon(Icons.search, color: Colors.grey, size: 30.0),
+//
+//        onChanged: (String value) {},
+//        onTap: () {},
+//        decoration: InputDecoration.collapsed(
+//          hintText: "Search Short Films...",
+//        ),
+//      ),
+//    );
 //  }
 //}
-
 
