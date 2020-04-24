@@ -142,12 +142,12 @@ class FilmList extends StatelessWidget {
                 child: ListTile(
                   title: Text(
                     film.title,
-                    style: Theme.of(context).textTheme.title,
+                    //style: Theme.of(context).textTheme.title,
                   ),
                   subtitle: Text(
                     film.description,
                     overflow: TextOverflow.fade,
-                    style: Theme.of(context).textTheme.subhead,
+                    //style: Theme.of(context).textTheme.subhead,
                   ),
                 ),
               ),

@@ -14,6 +14,7 @@ final makeCard =
       );
       },
     child: new Container(
+
         padding: EdgeInsets.only(left:16.0, top: 8.0, right: 16.0, bottom: 16.0),
 
           child: Material(
@@ -105,17 +106,18 @@ final makeCard =
       );
 
 
-    final makeBody = Container(
-      child: ListView.builder(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        itemCount: 4,
-        itemBuilder: (BuildContext context, int index) {
-          return makeCard;
-        },
-      ),
+      final makeBody = Container(
 
-    );
+        child: ListView.builder(
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          itemCount: 4,
+          itemBuilder: (BuildContext context, int index) {
+            return makeCard;
+          },
+        ),
+
+      );
     return makeBody;
   }
 }

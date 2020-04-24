@@ -45,7 +45,7 @@ class AuthService {
   Future<void> updateUserData(FirebaseUser user) {
     DocumentReference reportRef = _db.collection('reports').document(user.uid);
 
-    return reportRef.setData({'uid': user.uid, 'lastActivity': DateTime.now()},
+    return reportRef.setData({'uid': user.uid, 'lastActivity': DateTime.now(), 'email': user.email, 'name': user.displayName},
         merge: true);
   }
 
@@ -56,42 +56,3 @@ class AuthService {
 }
 
 
-//final FirebaseAuth _auth = FirebaseAuth.instance;
-//final GoogleSignIn googleSignIn = GoogleSignIn();
-//
-//
-//  String email;
-//
-//Future<String> signInWithGoogle() async {
-//  final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
-//  final GoogleSignInAuthentication googleSignInAuthentication =
-//  await googleSignInAccount.authentication;
-//
-//
-//  final AuthCredential credential = GoogleAuthProvider.getCredential(
-//    accessToken: googleSignInAuthentication.accessToken,
-//    idToken: googleSignInAuthentication.idToken,
-//  );
-//
-//  final AuthResult authResult = await _auth.signInWithCredential(credential);
-//  final FirebaseUser user = authResult.user;
-//
-//
-//  assert(user.email != null);
-//  email = user.email;
-//
-//  assert(!user.isAnonymous);
-//  assert(await user.getIdToken() != null);
-//
-//
-//  final FirebaseUser currentUser = await _auth.currentUser();
-//  assert(user.uid == currentUser.uid);
-//
-//  return 'signInWithGoogle succeeded: $user';
-//}
-//
-//void signOutGoogle() async{
-//  await googleSignIn.signOut();
-//
-//  print("User Sign Out");
-//}

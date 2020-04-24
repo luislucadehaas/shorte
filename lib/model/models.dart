@@ -27,11 +27,10 @@ class Film {
   String time;
   String director;
   String year;
+  String genre;
 //  Timestamp created_at;
 
-  List<Film> films;
-
-  Film({ this.title, this.url, this.picture, this.description, this.id, this.time,this.year,this.country,this.director});
+  Film({ this.title, this.url, this.picture, this.description, this.id, this.time,this.year,this.country,this.director, this.genre});
 
   factory Film.fromMap(Map data) {
     return Film(
@@ -43,7 +42,8 @@ class Film {
         title: data['title'] ?? '',
         url: data['url'] ?? '',
         description: data['description'] ?? '',
-        picture: data['picture'] ?? '',
+        picture: data['picture'] ?? 'default.png',
+        genre: data['genre'] ?? '',
     );
   }
 
