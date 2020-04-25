@@ -17,12 +17,12 @@ class GenreScreen extends StatelessWidget {
                   children: <Widget>[
                     SizedBox(height: 20),
                Text2(),
-                    SizedBox(height: 20),
+                    SizedBox(height: 10),
                Special(),
                 SizedBox(height: 20),
                     Text1(),
                     SizedBox(height: 10),
-              Expanded(child: Genres()),
+                Expanded(child: Genres()),
                   ],
             ),
 
@@ -64,7 +64,6 @@ class GenreItem extends StatelessWidget {
     return Container(
       height: 70,
       child: Card(
-
         elevation: 8.0,
         clipBehavior: Clip.antiAlias,
         margin: new EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
@@ -107,10 +106,9 @@ class Channels extends StatelessWidget {
           List<Special> specials = snap.data;
           return Scaffold(
             backgroundColor: Color.fromRGBO(0, 0, 0, 1.0),
-
             body:
                 Container(
-                  height: 200,
+                  height: 400,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: specials.map((special) => Special(special: special)).toList(),),
@@ -125,11 +123,6 @@ class Channels extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
 
 
 class Search extends StatelessWidget {
@@ -168,29 +161,29 @@ class Special extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 70,
+      height: 150,
+      width: 250,
             child: Card(
-        elevation: 8.0,
-        clipBehavior: Clip.antiAlias,
-        margin: new EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
-           child: Container(
-          decoration: BoxDecoration(color: Color.fromRGBO(2, 143, 22,1)),
-          child: InkWell(
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (BuildContext context) => Search(),
-                ),
-              );
-            },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 20, right: 0),
-                    child: Text(
-                        "special.title", style: TextStyle(color: Colors.black, fontSize: 23 ,fontWeight: FontWeight.bold)),
+        shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(10.0), ),
+              elevation: 8.0,
+              clipBehavior: Clip.antiAlias,
+              margin: new EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
+                 child: Container(
+                     decoration: BoxDecoration(color: Color.fromRGBO(70, 14, 22,1)),
+                  child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => Search(),
+                            ),
+                          );
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Center(
+                                child: Image.asset('images/shorte.png', fit: BoxFit.contain, height: 28),
                   ),
                 ),],
             ),
@@ -239,7 +232,6 @@ class FilmList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
         children: genre.films.map((film) {
           return Card(

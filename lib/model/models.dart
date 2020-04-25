@@ -75,13 +75,13 @@ class Genre {
 }
 
   class Special {
-  final String id;
-  final int r ;
-  final int g ;
-  final int b ;
-  final String image ;
-  final String title;
-  final List<Film> films;
+   String id;
+   int r ;
+   int g ;
+   int b ;
+   String image ;
+   String title;
+   List<Film> films;
 
   Special({ this.title, this.films, this.id, this.r, this.g, this.b, this.image });
 
