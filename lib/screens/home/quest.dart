@@ -20,12 +20,23 @@ class GenreScreen extends StatelessWidget {
           return Scaffold(
             backgroundColor: Color.fromRGBO(0, 0, 0, 1.0),
 
-            body: Container(
-                padding: EdgeInsets.only(top:10),
-              child: ListView(
-                children: genres.map((genre) => GenreItem(genre: genre)).toList(),
-              ),
+             body:
+              Column(
+                  children: <Widget>[
+                    SizedBox(height: 20),
+               Text2(),
+                    SizedBox(height: 20),
+               Special(),
+                SizedBox(height: 20),
+                    Text1(),
+                    SizedBox(height: 10),
+               Expanded(
+                 child: ListView(
+                  children: genres.map((genre) => GenreItem(genre: genre)).toList(),),
+                    ),
+                  ],
             ),
+
           );
         } else {
           //improve this loading screen functionality
@@ -37,6 +48,7 @@ class GenreScreen extends StatelessWidget {
 }
 
 
+
 class GenreItem extends StatelessWidget {
   final Genre genre;
   const GenreItem({Key key, this.genre}) : super(key: key);
@@ -44,7 +56,7 @@ class GenreItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 90,
+      height: 70,
         child: Card(
 
         elevation: 8.0,
@@ -60,7 +72,6 @@ class GenreItem extends StatelessWidget {
                 ),
               );
              },
-
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -157,7 +168,65 @@ class FilmList extends StatelessWidget {
   }
 }
 
+class Text1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 15.0, left: 15),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+       children: <Widget>[
+         Text("Genres", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),),
+         Text("See all Films", style: TextStyle(color: Colors.white, fontSize: 20, decoration: TextDecoration.underline),),
+       ],
+),
+    );
+  }
+}
 
+class Text2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 15.0, left: 15),
+      child: Row(
+        children: <Widget>[
+          Text("Channels", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),),
+        ],
+      ),
+    );
+  }
+}
+
+    class Special extends StatelessWidget {
+//  final Special special;
+//
+//  Special({this.special});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100,
+      child: PageView(
+        controller: PageController(viewportFraction: 0.9),
+        scrollDirection: Axis.horizontal,
+        pageSnapping: true,
+        children: <Widget>[
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 8),
+            color: Colors.redAccent,
+            width: 30,
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 8),
+            color: Colors.blueAccent,
+            width: 10,
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 //class _SearchState extends State<Search> {
 //  final Genre genre;
