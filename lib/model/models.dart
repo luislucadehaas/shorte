@@ -79,10 +79,11 @@ class Genre {
   final int r ;
   final int g ;
   final int b ;
+  final String image ;
   final String title;
   final List<Film> films;
 
-  Special({ this.title, this.films, this.id, this.r, this.g, this.b });
+  Special({ this.title, this.films, this.id, this.r, this.g, this.b, this.image });
 
   factory Special.fromMap(Map data) {
   return Special(
@@ -91,6 +92,7 @@ class Genre {
   r: data['r'] ?? 0,
   g: data['g'] ?? 0,
   b: data['b'] ?? 0,
+  image: data['image'] ?? 'default.png',
   films:  (data['films'] as List ?? []).map((v) => Film.fromMap(v)).toList(), //data['films'],
   );
   }

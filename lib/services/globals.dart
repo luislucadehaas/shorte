@@ -16,10 +16,12 @@ class Global {
   // Data Models
   static final Map models = {
     Genre: (data) => Genre.fromMap(data),
+    Special: (data) => Special.fromMap(data),
     Film: (data) => Film.fromMap(data),
     Report: (data) => Report.fromMap(data),
   };
   static final Collection<Genre> genresRef = Collection<Genre>(path: 'genres');
   static final UserData<Report> reportRef = UserData<Report>(collection: 'reports');
+  static final Collection<Special> specialsRef = Collection<Special>(path: 'specials');
 
 }

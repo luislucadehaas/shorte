@@ -1,25 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:shortefilmfestival/model/models.dart';
 import 'package:shortefilmfestival/screens/home/detail.dart';
-import 'package:shortefilmfestival/screens/home/list.dart';
 import 'package:shortefilmfestival/services/globals.dart';
 import 'package:shortefilmfestival/shared/loader.dart';
-import 'package:floating_search_bar/floating_search_bar.dart';
+
 
 
 
 class GenreScreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: Global.genresRef.getData(),
-      builder: (BuildContext context, AsyncSnapshot snap) {
-        if (snap.hasData) {
-          List<Genre> genres = snap.data;
           return Scaffold(
             backgroundColor: Color.fromRGBO(0, 0, 0, 1.0),
-
              body:
               Column(
                   children: <Widget>[
@@ -30,11 +22,98 @@ class GenreScreen extends StatelessWidget {
                 SizedBox(height: 20),
                     Text1(),
                     SizedBox(height: 10),
-               Expanded(
-                 child: ListView(
-                  children: genres.map((genre) => GenreItem(genre: genre)).toList(),),
-                    ),
+              Expanded(child: Genres()),
                   ],
+            ),
+
+          );
+  }
+}
+
+class Genres extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: Global.genresRef.getData(),
+      builder: (BuildContext context, AsyncSnapshot snap) {
+        if (snap.hasData) {
+          List<Genre> genres = snap.data;
+          return Scaffold(
+            backgroundColor: Color.fromRGBO(0, 0, 0, 1.0),
+
+            body:  ListView(
+                    children: genres.map((genre) => GenreItem(genre: genre)).toList(),),
+
+
+          );
+        } else {
+          //improve this loading screen functionality
+          return LoadingScreen();
+        }
+      },
+    );
+  }
+}
+
+class GenreItem extends StatelessWidget {
+  final Genre genre;
+  const GenreItem({Key key, this.genre}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 70,
+      child: Card(
+
+        elevation: 8.0,
+        clipBehavior: Clip.antiAlias,
+        margin: new EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
+        child: Container(
+          decoration: BoxDecoration(color: Color.fromRGBO(genre.r, genre.g, genre.b,1)),
+          child: InkWell(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => Search(genre: genre),
+                ),
+              );
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 20, right: 0),
+                    child: Text(
+                        genre.title, style: TextStyle(color: Colors.black, fontSize: 23 ,fontWeight: FontWeight.bold)),
+                  ),
+                ),],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Channels extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: Global.specialsRef.getData(),
+      builder: (BuildContext context, AsyncSnapshot snap) {
+        if (snap.hasData) {
+          List<Special> specials = snap.data;
+          return Scaffold(
+            backgroundColor: Color.fromRGBO(0, 0, 0, 1.0),
+
+            body:
+                Container(
+                  height: 200,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: specials.map((special) => Special(special: special)).toList(),),
             ),
 
           );
@@ -49,50 +128,6 @@ class GenreScreen extends StatelessWidget {
 
 
 
-class GenreItem extends StatelessWidget {
-  final Genre genre;
-  const GenreItem({Key key, this.genre}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 70,
-        child: Card(
-
-        elevation: 8.0,
-        clipBehavior: Clip.antiAlias,
-        margin: new EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
-           child: Container(
-           decoration: BoxDecoration(color: Color.fromRGBO(genre.r, genre.g, genre.b,1)),
-            child: InkWell(
-             onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (BuildContext context) => Search(genre: genre),
-                ),
-              );
-             },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 20, right: 0),
-                        child: Text(
-                          genre.title, style: TextStyle(color: Colors.black, fontSize: 23 ,fontWeight: FontWeight.bold)),
-                        ),
-                      //trailing:
-                      //Icon(Icons.keyboard_arrow_right, color: Colors.black, size: 30.0)),
-                    ), ],
-                ),
-                // )
-              //],
-            ),
-          ),
-        ),
-      );
-  }
-}
 
 
 
@@ -126,6 +161,77 @@ class Search extends StatelessWidget {
 }
 
 
+class Special extends StatelessWidget {
+  final Special special;
+  const Special({Key key, this.special}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 70,
+            child: Card(
+        elevation: 8.0,
+        clipBehavior: Clip.antiAlias,
+        margin: new EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
+           child: Container(
+          decoration: BoxDecoration(color: Color.fromRGBO(2, 143, 22,1)),
+          child: InkWell(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => Search(),
+                ),
+              );
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 20, right: 0),
+                    child: Text(
+                        "special.title", style: TextStyle(color: Colors.black, fontSize: 23 ,fontWeight: FontWeight.bold)),
+                  ),
+                ),],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+class Text1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 17.0, left: 15),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Text("Genres", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),),
+          Text("See all Films", style: TextStyle(color: Colors.white, fontSize: 20, decoration: TextDecoration.underline),),
+        ],
+      ),
+    );
+  }
+}
+
+class Text2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 15.0, left: 15),
+      child: Row(
+        children: <Widget>[
+          Text("Channels", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),),
+        ],
+      ),
+    );
+  }
+}
 
 class FilmList extends StatelessWidget {
   final Genre genre;
@@ -168,37 +274,9 @@ class FilmList extends StatelessWidget {
   }
 }
 
-class Text1 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 15.0, left: 15),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-       children: <Widget>[
-         Text("Genres", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),),
-         Text("See all Films", style: TextStyle(color: Colors.white, fontSize: 20, decoration: TextDecoration.underline),),
-       ],
-),
-    );
-  }
-}
+/*
 
-class Text2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 15.0, left: 15),
-      child: Row(
-        children: <Widget>[
-          Text("Channels", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),),
-        ],
-      ),
-    );
-  }
-}
-
-    class Special extends StatelessWidget {
+class Special1 extends StatelessWidget {
 //  final Special special;
 //
 //  Special({this.special});
@@ -227,37 +305,4 @@ class Text2 extends StatelessWidget {
     );
   }
 }
-
-//class _SearchState extends State<Search> {
-//  final Genre genre;
-//  _SearchState({this.genre});
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return Scaffold(
-//      backgroundColor: Colors.black,
-//      appBar: AppBar(
-//        backgroundColor: Colors.black,
-//        title: Text("genre.title"),
-//      ),
-//      body: FloatingSearchBar.builder(
-//        padding: EdgeInsets.only(top: 10.0),
-//
-//        itemCount: 3,
-//        itemBuilder: (BuildContext context, int index) {
-//          return ListTile(
-//            leading: Text(index.toString()),
-//          );
-//        },
-//        trailing: Icon(Icons.search, color: Colors.grey, size: 30.0),
-//
-//        onChanged: (String value) {},
-//        onTap: () {},
-//        decoration: InputDecoration.collapsed(
-//          hintText: "Search Short Films...",
-//        ),
-//      ),
-//    );
-//  }
-//}
-
+*/
