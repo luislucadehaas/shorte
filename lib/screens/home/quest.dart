@@ -40,11 +40,8 @@ class Genres extends StatelessWidget {
           List<Genre> genres = snap.data;
           return Scaffold(
             backgroundColor: Color.fromRGBO(0, 0, 0, 1.0),
-
             body:  ListView(
                     children: genres.map((genre) => GenreItem(genre: genre)).toList(),),
-
-
           );
         } else {
           //improve this loading screen functionality
@@ -113,7 +110,6 @@ class Channels extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     children: specials.map((special) => Special(special: special)).toList(),),
             ),
-
           );
         } else {
           //improve this loading screen functionality
@@ -124,34 +120,6 @@ class Channels extends StatelessWidget {
   }
 }
 
-
-class Search extends StatelessWidget {
-  final Genre genre;
-  Search({this.genre});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Text(genre.title, style: TextStyle(fontWeight: FontWeight.bold)),
-
-      ),
-      body: ListView(children: [
-              Container(
-            margin: const EdgeInsets.symmetric(
-              horizontal: 0.0,
-            ),
-            width: double.infinity,
-            height: 3.0,
-            color: Color.fromRGBO(genre.r, genre.g, genre.b,1),
-          ),
-        FilmList(genre: genre)
-      ]),
-    );
-  }
-}
 
 
 class Special extends StatelessWidget {
@@ -174,7 +142,7 @@ class Special extends StatelessWidget {
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (BuildContext context) => Search(),
+                              builder: (BuildContext context) => DetailPage(),
                             ),
                           );
                         },
@@ -190,6 +158,34 @@ class Special extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class Search extends StatelessWidget {
+  final Genre genre;
+  Search({this.genre});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text(genre.title, style: TextStyle(fontWeight: FontWeight.bold)),
+
+      ),
+      body: ListView(children: [
+        Container(
+          margin: const EdgeInsets.symmetric(
+            horizontal: 0.0,
+          ),
+          width: double.infinity,
+          height: 3.0,
+          color: Color.fromRGBO(genre.r, genre.g, genre.b,1),
+        ),
+        FilmList(genre: genre)
+      ]),
     );
   }
 }

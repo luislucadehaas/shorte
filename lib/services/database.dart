@@ -75,7 +75,6 @@ class UserData<T> {
     } else {
       return null;
     }
-
   }
 
   Future<void> upsert(Map data) async {

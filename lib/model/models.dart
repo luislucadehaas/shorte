@@ -65,7 +65,6 @@ class Genre {
     return Genre(
       id: data['id'] ?? '',
       title: data['title'] ?? '',
-      color: data['color'] ?? '',
       r: data['r'] ?? 0,
       g: data['g'] ?? 0,
       b: data['b'] ?? 0,
@@ -75,13 +74,13 @@ class Genre {
 }
 
   class Special {
-   String id;
-   int r ;
-   int g ;
-   int b ;
-   String image ;
-   String title;
-   List<Film> films;
+    final String id;
+    final int r ;
+    final int g ;
+    final int b ;
+    final String image ;
+    final String title;
+    final List<Film> films;
 
   Special({ this.title, this.films, this.id, this.r, this.g, this.b, this.image });
 

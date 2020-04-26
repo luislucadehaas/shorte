@@ -19,15 +19,16 @@ class Preference extends StatelessWidget {
       body:
       Column(
         children: <Widget>[
-          SizedBox(height: 80),
+          SizedBox(height: 70),
           Center(
             child: Container(
               width: 360,
-               child: Text("Welcome to Shorte Luis! To accuratly curate your weekly Stream  of Short Films please select your preferences", textAlign: TextAlign.center, overflow: TextOverflow.ellipsis,
+               height: 150,
+               child: Text("Welcome to Shorte! To accuratly curate your weekly Stream  of Short Films please select your preferences", textAlign: TextAlign.center, overflow: TextOverflow.ellipsis,
                    maxLines: 5,style: TextStyle(height: 1.5,color: Colors.white, fontSize: 23, fontWeight: FontWeight.bold),)),
           ),
-          SizedBox(height: 10),
-
+          SizedBox(height: 30),
+          //Expanded(child: SamplePage()),
           SizedBox(height: 20),
 
           SizedBox(height: 10),
@@ -46,4 +47,66 @@ class Preference extends StatelessWidget {
   }
 }
 }
+
+/*
+class SamplePage extends StatefulWidget {
+  @override
+  _SamplePageState createState() => _SamplePageState();
+}
+
+class _SamplePageState extends State<SamplePage> {
+  List<bool> isSelected;
+
+  @override
+  void initState() {
+    isSelected = [false, false];
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body:
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            ToggleButtons(
+              borderColor: Colors.grey,
+              color: Colors.grey,
+              borderWidth: 2,
+              selectedBorderColor: Colors.white,
+              selectedColor: Colors.white,
+              borderRadius: BorderRadius.circular(15),
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Text(
+                    'Open 24 Hours',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Text(
+                    'Custom Hours',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+              ],
+              onPressed: (int index) {
+                setState(() {
+                  isSelected[index] = !isSelected[index];
+                });
+              },
+              isSelected: isSelected,
+            ),
+          ],
+        ),
+    );
+  }
+}
+*/
+
 
