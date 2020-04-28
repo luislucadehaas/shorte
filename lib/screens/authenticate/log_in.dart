@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shortefilmfestival/screens/home/home.dart';
+import 'package:shortefilmfestival/screens/home/preferences.dart';
 import 'package:shortefilmfestival/services/sign_in.dart';
 import 'package:flare_flutter/flare_actor.dart';
 
@@ -52,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
       onPressed: () async{
         var user = await auth.googleSignIn();
         if (user != null) {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) {return Home();},),);
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {return Preference();},),);
         };
       },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shortefilmfestival/screens/authenticate/log_in.dart';
-import 'package:shortefilmfestival/screens/home/preferences.dart';
 
 class OnboardingScreen extends StatefulWidget {
   @override
@@ -225,7 +224,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         width: double.infinity,
         color: Colors.white,
         child: GestureDetector(
-          onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) {return Preference();},),),
+          onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) {return LoginPage();},),),
           child: Center(
             child: Padding(
               padding: EdgeInsets.only(bottom: 30.0),
