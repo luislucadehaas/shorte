@@ -18,7 +18,9 @@ class GenreScreen extends StatelessWidget {
                     SizedBox(height: 20),
                Text2(),
                     SizedBox(height: 10),
-               Special(),
+               Container(
+                 height: 160,
+                   child: Channels()),
                 SizedBox(height: 20),
                     Text1(),
                     SizedBox(height: 10),
@@ -41,7 +43,8 @@ class Genres extends StatelessWidget {
           return Scaffold(
             backgroundColor: Color.fromRGBO(0, 0, 0, 1.0),
             body:  ListView(
-                    children: genres.map((genre) => GenreItem(genre: genre)).toList(),),
+                    children: genres.map((genre) => GenreItem(genre: genre)).toList(),
+            ),
           );
         } else {
           //improve this loading screen functionality
@@ -65,7 +68,8 @@ class GenreItem extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         margin: new EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
         child: Container(
-          decoration: BoxDecoration(color: Color.fromRGBO(genre.r, genre.g, genre.b,1)),
+          decoration: BoxDecoration(color: Color.fromRGBO(0, 0, 0,1),border: Border.all(color: Colors.white, width: 2,)),
+            //Color.fromRGBO(genre.r, genre.g, genre.b,1)
           child: InkWell(
             onTap: () {
               Navigator.of(context).push(
@@ -81,7 +85,7 @@ class GenreItem extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.only(left: 20, right: 0),
                     child: Text(
-                        genre.title, style: TextStyle(color: Colors.black, fontSize: 23 ,fontWeight: FontWeight.bold)),
+                        genre.title, style: TextStyle(color: Colors.white, fontSize: 24 ,fontWeight: FontWeight.bold)),
                   ),
                 ),],
             ),
@@ -93,7 +97,6 @@ class GenreItem extends StatelessWidget {
 }
 
 class Channels extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -108,7 +111,7 @@ class Channels extends StatelessWidget {
                   height: 400,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
-                    children: specials.map((special) => Special(special: special)).toList(),),
+                    children: specials.map((special) => SpecialItem(special: special)).toList(),),
             ),
           );
         } else {
@@ -122,9 +125,9 @@ class Channels extends StatelessWidget {
 
 
 
-class Special extends StatelessWidget {
+class SpecialItem extends StatelessWidget {
   final Special special;
-  const Special({Key key, this.special}) : super(key: key);
+  const SpecialItem({Key key, this.special}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -135,9 +138,9 @@ class Special extends StatelessWidget {
         shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(10.0), ),
               elevation: 8.0,
               clipBehavior: Clip.antiAlias,
-              margin: new EdgeInsets.symmetric(horizontal: 15.0, vertical: 6.0),
+              margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
                  child: Container(
-                     decoration: BoxDecoration(color: Color.fromRGBO(70, 14, 22,1)),
+                     decoration: BoxDecoration(color: Color.fromRGBO(special.r, special.g, special.b,1)),
                   child: InkWell(
                         onTap: () {
                           Navigator.of(context).push(
@@ -151,7 +154,7 @@ class Special extends StatelessWidget {
                           children: [
                             Expanded(
                               child: Center(
-                                child: Image.asset('images/shorte.png', fit: BoxFit.contain, height: 28),
+                                child: Image.network(special.image, fit: BoxFit.contain, height: 50),
                   ),
                 ),],
             ),
@@ -228,6 +231,7 @@ class FilmList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Column(
         children: genre.films.map((film) {
           return Card(
@@ -252,6 +256,7 @@ class FilmList extends StatelessWidget {
                   subtitle: Text(
                     film.description,
                     overflow: TextOverflow.fade,
+                    style: TextStyle(color: Colors.white),
                     //style: Theme.of(context).textTheme.subhead,
                   ),
                 ),

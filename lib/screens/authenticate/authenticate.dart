@@ -11,8 +11,8 @@ class _AuthenticateState extends State<Authenticate> {
   @override
   Widget build(BuildContext context) {
     return Container(
-// we need to add the onboarding screen her, missing logic so that
-      child: LoginPage(),
+// we need to add the onboarding screen her, missing logic so that, hier ist eigentlich der Login screen
+      child: OnboardingScreen(),
     );
   }
 }

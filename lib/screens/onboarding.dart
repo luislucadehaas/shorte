@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shortefilmfestival/screens/authenticate/log_in.dart';
+import 'package:shortefilmfestival/screens/home/preferences.dart';
 
 class OnboardingScreen extends StatefulWidget {
   @override
@@ -23,7 +24,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget _indicator(bool isActive) {
     return AnimatedContainer(
       duration: Duration(milliseconds: 150),
-      margin: EdgeInsets.symmetric(horizontal: 9.0),
+      margin: EdgeInsets.symmetric(horizontal: 5.0),
       height: 8.0,
       width: isActive ? 24.0 : 16.0,
       decoration: BoxDecoration(
@@ -78,7 +79,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           children: <Widget>[
                             Center(
                               child: Image(
-                                image: AssetImage("images/shorte.png"),
+                                image: NetworkImage("https://firebasestorage.googleapis.com/v0/b/shorte-festival.appspot.com/o/image%20(3).jpg?alt=media&token=03fd56ed-0c15-4fba-a549-afa508275df5"),
                                 height: 300.0,
                                 width: 300.0,
                               ),
@@ -110,8 +111,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           children: <Widget>[
                             Center(
                               child: Image(
-                                image: AssetImage(
-                                  'images/shorte.png',
+                                image: NetworkImage(
+                                  'https://firebasestorage.googleapis.com/v0/b/shorte-festival.appspot.com/o/image%20(2).jpg?alt=media&token=ffb7323e-8e40-48e6-b58e-9dd1feabe179',
                                 ),
                                 height: 300.0,
                                 width: 300.0,
@@ -144,8 +145,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           children: <Widget>[
                             Center(
                               child: Image(
-                                image: AssetImage(
-                                  'images/shorte.png',
+                                image: NetworkImage(
+                                    "https://firebasestorage.googleapis.com/v0/b/shorte-festival.appspot.com/o/image%20(1).jpg?alt=media&token=f6b450f0-774c-4f7a-bc22-f56c5c292d0d",
                                 ),
                                 height: 300.0,
                                 width: 300.0,
@@ -224,7 +225,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         width: double.infinity,
         color: Colors.white,
         child: GestureDetector(
-          onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) {return LoginPage();},),),
+          onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) {return Preference();},),),
           child: Center(
             child: Padding(
               padding: EdgeInsets.only(bottom: 30.0),

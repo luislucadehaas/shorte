@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:shortefilmfestival/screens/authenticate/log_in.dart';
+import 'package:shortefilmfestival/screens/home/home.dart';
+import 'package:shortefilmfestival/screens/home/stream.dart';
 import 'package:shortefilmfestival/services/sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +21,7 @@ class Preference extends StatelessWidget {
       body:
       Column(
         children: <Widget>[
-          SizedBox(height: 70),
+          SizedBox(height: 90),
           Center(
             child: Container(
               width: 360,
@@ -27,10 +29,12 @@ class Preference extends StatelessWidget {
                child: Text("Welcome to Shorte! To accuratly curate your weekly Stream  of Short Films please select your preferences", textAlign: TextAlign.center, overflow: TextOverflow.ellipsis,
                    maxLines: 5,style: TextStyle(height: 1.5,color: Colors.white, fontSize: 23, fontWeight: FontWeight.bold),)),
           ),
-          SizedBox(height: 30),
-          //Expanded(child: SamplePage()),
           SizedBox(height: 20),
-
+          Container(
+              height: 380,
+              child: MyHomePage()),
+          SizedBox(height: 20),
+          //Expanded(child: MyHomePage()),
           SizedBox(height: 10),
 
         ],
@@ -46,6 +50,146 @@ class Preference extends StatelessWidget {
     );
   }
 }
+}
+
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  List<String> reportList = [
+    "Action",
+    "Animations",
+    "Comedy",
+    "Documnetary",
+    "Drama",
+    "Romance",
+    "Thriller",
+    "Science Fiction & Fantasy",
+
+  ];
+
+  List<String> selectedReportList = List();
+
+  _showReportDialog() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          //Here we will build the content of the dialog
+          return Container(
+            child: MultiSelectChip(
+              reportList,
+              onSelectionChanged: (selectedList) {
+                setState(() {
+                  selectedReportList = selectedList;
+                });
+              },
+            ),
+          );
+        });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+          Container(
+            width: 350,
+           child: MultiSelectChip(
+          reportList,
+          onSelectionChanged: (selectedList) {
+            setState(() {
+              selectedReportList = selectedList;
+            });
+          },
+        ),
+      ),
+            RaisedButton(
+              shape: StadiumBorder(),
+              textColor: Colors.black,
+              color: Colors.white,
+              child: Padding(
+                padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 15, bottom: 15),
+                child: Text("Save & Enjoy", style: TextStyle(fontSize: 20),),
+              ),
+              onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Home()),
+                );
+
+              }
+            ),
+            //Text(selectedReportList.join(" , "), style: TextStyle(color: Colors.white, fontSize: 15)),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class MultiSelectChip extends StatefulWidget {
+  final List<String> reportList;
+  final Function(List<String>) onSelectionChanged;
+
+  MultiSelectChip(this.reportList, {this.onSelectionChanged});
+
+  @override
+  _MultiSelectChipState createState() => _MultiSelectChipState();
+}
+
+class _MultiSelectChipState extends State<MultiSelectChip> {
+  // String selectedChoice = "";
+  List<String> selectedChoices = List();
+
+  _buildChoiceList() {
+    List<Widget> choices = List();
+
+    widget.reportList.forEach((item) {
+      choices.add(Container(
+        padding: const EdgeInsets.all(2.0),
+        child: FilterChip(
+          padding: EdgeInsets.only(left: 12, right: 12),
+          selectedColor: Colors.white,
+          backgroundColor: Color.fromRGBO(128, 128, 128, 0.5),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(6)),
+
+          ),
+
+          label: Text(item, style: TextStyle(fontSize: 15),),
+          selected: selectedChoices.contains(item),
+          onSelected: (selected) {
+            setState(() {
+              selectedChoices.contains(item)
+                  ? selectedChoices.remove(item)
+                  : selectedChoices.add(item);
+              widget.onSelectionChanged(selectedChoices);
+            });
+          },
+        ),
+      ));
+    });
+
+    return choices;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      children: _buildChoiceList(),
+    );
+  }
 }
 
 /*
@@ -72,12 +216,7 @@ class _SamplePageState extends State<SamplePage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             ToggleButtons(
-              borderColor: Colors.grey,
-              color: Colors.grey,
-              borderWidth: 2,
-              selectedBorderColor: Colors.white,
-              selectedColor: Colors.white,
-              borderRadius: BorderRadius.circular(15),
+              c
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.all(4.0),

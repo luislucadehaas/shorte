@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:shortefilmfestival/screens/authenticate/log_in.dart';
+import 'package:shortefilmfestival/screens/home/preferences.dart';
 import 'package:shortefilmfestival/services/sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
@@ -70,7 +71,19 @@ class Settings extends StatelessWidget {
                         ),
                         onTap: () {},
                       ),
-                    )
+                    ),
+                    _buildDivider(),
+                    ListTile(
+
+                      title: Text("Preferences"),
+                      trailing: Icon(Icons.keyboard_arrow_right, color: Colors.black, size: 30.0),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Preference()),
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),

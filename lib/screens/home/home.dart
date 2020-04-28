@@ -41,7 +41,7 @@ class _ListPageState extends State<ListPage> {
     final topAppBar = AppBar(
       elevation: 0.1,
       backgroundColor: Color.fromRGBO(0, 0, 0, 1.0),
-      leading: IconButton(
+      /*leading: IconButton(
         icon: Icon(Icons.tune,size: 30.0, color: Colors.grey),
         onPressed: () {
           Navigator.push(
@@ -49,7 +49,7 @@ class _ListPageState extends State<ListPage> {
             MaterialPageRoute(builder: (context) => Preference()),
           );
         },
-      ),
+      ),*/
       title: Image.asset('images/shorte.png', fit: BoxFit.contain, height: 28),
       actions: <Widget>[
         IconButton(

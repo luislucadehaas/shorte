@@ -19,9 +19,7 @@ class MyApp extends StatelessWidget {
 
     return MultiProvider(
         providers: [
-          StreamProvider<FirebaseUser>.value(
-              value: AuthService().user)
-        ],
+          StreamProvider<FirebaseUser>.value(value: AuthService().user)],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
             navigatorObservers: [
