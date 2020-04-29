@@ -21,17 +21,17 @@ class Preference extends StatelessWidget {
       body:
       Column(
         children: <Widget>[
-          SizedBox(height: 90),
+          SizedBox(height: 100),
           Center(
             child: Container(
               width: 360,
                height: 150,
-               child: Text("Welcome to Shorte! To accuratly curate your weekly Stream  of Short Films please select your preferences", textAlign: TextAlign.center, overflow: TextOverflow.ellipsis,
+               child: Text("Welcome to Shorte! \nTo accuratly curate your weekly Stream  of Short Films please select your preferences", textAlign: TextAlign.center, overflow: TextOverflow.ellipsis,
                    maxLines: 5,style: TextStyle(height: 1.5,color: Colors.white, fontSize: 23, fontWeight: FontWeight.bold),)),
           ),
           SizedBox(height: 20),
-          Container(
-              height: 380,
+          Expanded(
+
               child: MyHomePage()),
           SizedBox(height: 20),
           //Expanded(child: MyHomePage()),
@@ -71,6 +71,12 @@ class _MyHomePageState extends State<MyHomePage> {
     "Romance",
     "Thriller",
     "Science Fiction & Fantasy",
+    "Love story",
+    "Sad",
+    "Scary",
+    "Exciting",
+    "Anime",
+    "Surprise",
 
   ];
 
@@ -163,9 +169,9 @@ class _MultiSelectChipState extends State<MultiSelectChip> {
           selectedColor: Colors.white,
           backgroundColor: Color.fromRGBO(128, 128, 128, 0.5),
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(6)),
-
-          ),
+              borderRadius: BorderRadius.all(Radius.circular(6)),),
+          checkmarkColor: Colors.black,
+          labelStyle: TextStyle(color: Colors.black),
 
           label: Text(item, style: TextStyle(fontSize: 15),),
           selected: selectedChoices.contains(item),
